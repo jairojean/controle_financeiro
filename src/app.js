@@ -1,6 +1,10 @@
-const express = require('express');
+import {openDb} from './configDB.js';
+import express from 'express';
 
 const app = express();
+app.use(express.json());
+
+openDb();
 
 app.listen(3000, console.log("Rodando..."));
 
@@ -10,7 +14,7 @@ app.get('/', function(req , res){
 } )
 
 app.post('/income', function(req , res){
-    console.log(req);
+    console.log(req.body);
     res.json({"statuscode": 200});
     
      
